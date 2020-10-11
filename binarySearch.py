@@ -30,10 +30,7 @@ def binary_search_recursivo(my_list, find):
 
 
 # Ejemplo Geeks for Geeks
-def binary_search_recursivo_eficiente(arr, x):
-
-    l = arr[0]
-    r = arr[-1]
+def binary_search_recursivo_eficiente(arr, l, r, x):
 
     # Check base case
     if r >= l:
@@ -57,3 +54,15 @@ def binary_search_recursivo_eficiente(arr, x):
     else:
         # Element is not present in the array
         return -1
+
+
+def binary_search_iterativo(arr, l_index, r_index, x):
+    while l_index <= r_index:
+        center = l_index + (r_index - l_index) // 2
+        if arr[center] == x:
+            return center
+        elif arr[center] < x:
+            l_index = center + 1
+        else:
+            r_index = center - 1
+    return -1
