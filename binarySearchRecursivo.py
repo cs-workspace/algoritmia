@@ -2,7 +2,7 @@
 Algoritmia y Complejidad
 Entrega: 10/12/2020
 '''
-import time
+from typing import Tuple
 
 
 def binary_search_recursivo(my_list, find):
@@ -29,7 +29,11 @@ def binary_search_recursivo(my_list, find):
             f'No fue posible encontrar el numero {find} en la lista: {re.args[0]}\n')
 
 
-def binarySearch(arr, l, r, x):
+# Ejemplo Geeks for Geeks
+def binary_search_recursivo_eficiente(arr, x):
+
+    l = arr[0]
+    r = arr[-1]
 
     # Check base case
     if r >= l:
@@ -43,22 +47,13 @@ def binarySearch(arr, l, r, x):
         # If element is smaller than mid, then it
         # can only be present in left subarray
         elif arr[mid] > x:
-            return binarySearch(arr, l, mid-1, x)
+            return binary_search_recursivo_eficiente(arr, l, mid-1, x)
 
         # Else the element can only be present
         # in right subarray
         else:
-            return binarySearch(arr, mid + 1, r, x)
+            return binary_search_recursivo_eficiente(arr, mid + 1, r, x)
 
     else:
         # Element is not present in the array
         return -1
-
-
-my_list = list(range(0, 10000000))
-find = my_list[7]
-
-start_time = time.time()
-print(f'Binary Search Recursivo\nFind = {find}\nResultado =  ',
-      binary_search_recursivo(my_list, 0, len(my_list)-1, find))
-print('\ntiempo', time.time() - start_time)
